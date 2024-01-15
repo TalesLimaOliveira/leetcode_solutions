@@ -17,9 +17,29 @@ Input: nums = [1,1,1,3,3,4,3,2,4,2]
 Output: true
 */
 
+//Time complexity:  O(n)
+//Space complexity: O(n)
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        
+        unordered_set<int> seen;
+        for(int i =0;i<nums.size();i++){
+            if(seen.find(nums[i]) != seen.end())
+                return true;
+            seen.insert(nums[i]);
+        }
+        return false;
+    }
+};
+
+//OR
+
+//Time complexity:  O(n)
+//Space complexity: O(n)
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> s(nums.begin(), nums.end());
+        return (s.size() != nums.size());
     }
 };
